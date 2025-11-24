@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewGamE Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <nav class="navbar">
+            <div class="logo">NewGamE <span>Hub</span></div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#games" class="nav-link" data-section="games">Games</a>
+                <a href="#community" class="nav-link" data-section="community">Community</a>
+            </div>
+            <div class="user-area" id="userArea">
+                <!-- Injected via JS -->
+                <a href="/auth/discord" class="btn-login">Login with Discord</a>
+            </div>
+        </nav>
+
+        <main>
+            <!-- HOME SECTION -->
+            <section id="home" class="section active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>Level Up Your <br><span class="gradient-text">Gaming Experience</span></h1>
+                        <p>Join the ultimate community. Complete tasks, earn points, and redeem exclusive rewards.</p>
+                        <div class="hero-buttons">
+                            <a href="#games" class="btn-primary nav-trigger" data-section="games">Explore Games</a>
+                            <a href="/auth/discord" class="btn-secondary" id="heroLoginBtn">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="glow-circle"></div>
+                        <div class="card-stack">
+                            <div class="card glass-card">
+                                <div class="card-icon">🎮</div>
+                                <h3>Play</h3>
+                            </div>
+                            <div class="card glass-card">
+                                <div class="card-icon">🏆</div>
+                                <h3>Earn</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dashboard" class="dashboard hidden">
+                    <div class="section-header">
+                        <h2>Your Dashboard</h2>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card glass-card">
+                            <h3>Points</h3>
+                            <p class="stat-value" id="userPoints">0</p>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <h3>Role</h3>
+                            <p class="stat-value" id="userRole">-</p>
+                        </div>
+                    </div>
+
+                    <div class="actions-grid">
+                        <div class="action-card glass-card">
+                            <h3>Redeem Code</h3>
+                            <div class="input-group">
+                                <input type="text" id="redeemCodeInput" placeholder="Enter code...">
+                                <button onclick="redeemCode()" class="btn-small">Redeem</button>
+                            </div>
+                        </div>
+
+                        <div id="adminPanel" class="action-card glass-card hidden">
+                            <h3>Admin Panel</h3>
+                            <div class="input-group vertical">
+                                <input type="text" id="taskCode" placeholder="Task Code">
+                                <input type="number" id="taskPoints" placeholder="Points">
+                                <input type="number" id="taskTime" placeholder="Time (sec)">
+                                <button onclick="createTask()" class="btn-small">Create Task</button>
+                            </div>
+                        </div>
+
+                        <div id="roleManagement" class="action-card glass-card hidden">
+                            <h3>Role Management</h3>
+                            <div class="input-group vertical">
+                                <input type="text" id="targetUserId" placeholder="User Discord ID">
+                                <select id="roleSelect" class="role-select">
+                                    <option value="">Select Role</option>
+                                    <option value="Marechal">Marechal</option>
+                                    <option value="General">General</option>
+                                    <option value="Capitão">Capitão</option>
+                                    <option value="Soldado">Soldado</option>
+                                    <option value="Recruta">Recruta</option>
+                                </select>
+                                <button onclick="assignRole()" class="btn-small">Assign Role</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GAMES SECTION -->
+            <section id="games" class="section">
+                <div class="section-header">
+                    <h2>Available Games</h2>
+                    <p>Explore our collection of games and challenges</p>
+                </div>
+                <div class="games-grid">
+                    <div class="game-card glass-card">
+                        <div class="game-icon">🎯</div>
+                        <h3>Quick Tasks</h3>
+                        <p>Complete quick challenges and earn points instantly</p>
+                        <button class="btn-small" onclick="alert('Coming Soon!')">Play Now</button>
+                    </div>
+                    <div class="game-card glass-card">
+                        <div class="game-icon">🏁</div>
+                        <h3>Speed Run</h3>
+                        <p>Race against time in our speed challenges</p>
+                        <button class="btn-small" onclick="alert('Coming Soon!')">Play Now</button>
+                    </div>
+                    <div class="game-card glass-card">
+                        <div class="game-icon">🎲</div>
+                        <h3>Daily Quests</h3>
+                        <p>New quests every day with special rewards</p>
+                        <button class="btn-small" onclick="alert('Coming Soon!')">Play Now</button>
+                    </div>
+                    <div class="game-card glass-card">
+                        <div class="game-icon">⚔️</div>
+                        <h3>Tournaments</h3>
+                        <p>Compete with others for the top spot</p>
+                        <button class="btn-small" onclick="alert('Coming Soon!')">Play Now</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COMMUNITY SECTION -->
+            <section id="community" class="section">
+                <div class="section-header">
+                    <h2>Community</h2>
+                    <p>Connect with other players and join the conversation</p>
+                </div>
+                <div class="community-grid">
+                    <div class="community-card glass-card">
+                        <div class="community-icon">💬</div>
+                        <h3>Discord Server</h3>
+                        <p>Join our Discord community with over 1,000+ active members</p>
+                        <a href="https://discord.gg/yourinvite" target="_blank" class="btn-small">Join Discord</a>
+                    </div>
+                    <div class="community-card glass-card">
+                        <div class="community-icon">🏆</div>
+                        <h3>Leaderboard</h3>
+                        <p>Check out the top players and their achievements</p>
+                        <button class="btn-small" onclick="showLeaderboard()">View Rankings</button>
+                    </div>
+                    <div class="community-card glass-card">
+                        <div class="community-icon">📢</div>
+                        <h3>Announcements</h3>
+                        <p>Stay updated with the latest news and events</p>
+                        <button class="btn-small" onclick="showAnnouncements()">Read More</button>
+                    </div>
+                </div>
+
+                <div id="leaderboardSection" class="leaderboard-section hidden">
+                    <h3>Top Players</h3>
+                    <div class="leaderboard-list" id="leaderboardList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
