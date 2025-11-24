@@ -9,9 +9,13 @@ const authController = require('./src/controllers/authController');
 const guildController = require('./src/controllers/guildController');
 const { requireAuth, requireAdmin, logAuthRequest } = require('./src/middleware/auth');
 const logger = require('./src/utils/logger');
+const connectDB = require('./src/config/database');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Connect to Database
+connectDB();
 
 // ============================================
 // SECURITY MIDDLEWARE
