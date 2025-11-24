@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: newgame-hub
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    # As outras variáveis de ambiente devem ser configuradas no dashboard do Render
+    # por segurança (SESSION_SECRET, CLIENT_ID, CLIENT_SECRET, etc.)
