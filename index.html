@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -16,13 +16,13 @@
         <nav class="navbar">
             <div class="logo">NewGamE <span>Hub</span></div>
             <div class="nav-links">
-                <a href="#home" class="nav-link active" data-section="home">Home</a>
-                <a href="#games" class="nav-link" data-section="games">Games</a>
-                <a href="#community" class="nav-link" data-section="community">Community</a>
+                <a href="#home" class="nav-link active" data-section="home">Início</a>
+                <a href="#games" class="nav-link" data-section="games">Jogos</a>
+                <a href="#community" class="nav-link" data-section="community">Comunidade</a>
             </div>
             <div class="user-area" id="userArea">
                 <!-- Injected via JS -->
-                <a href="/auth/discord" class="btn-login">Login with Discord</a>
+                <a href="/auth/discord" class="btn-login">Entrar com Discord</a>
             </div>
         </nav>
 
@@ -31,11 +31,12 @@
             <section id="home" class="section active">
                 <div class="hero">
                     <div class="hero-content">
-                        <h1>Level Up Your <br><span class="gradient-text">Gaming Experience</span></h1>
-                        <p>Join the ultimate community. Complete tasks, earn points, and redeem exclusive rewards.</p>
+                        <h1>Eleve Seu <br><span class="gradient-text">Nível de Jogo</span></h1>
+                        <p>Junte-se à comunidade definitiva. Complete tarefas, ganhe pontos e resgate recompensas
+                            exclusivas.</p>
                         <div class="hero-buttons">
-                            <a href="#games" class="btn-primary nav-trigger" data-section="games">Explore Games</a>
-                            <a href="/auth/discord" class="btn-secondary" id="heroLoginBtn">Get Started</a>
+                            <a href="#games" class="btn-primary nav-trigger" data-section="games">Explorar Jogos</a>
+                            <a href="/auth/discord" class="btn-secondary" id="heroLoginBtn">Começar</a>
                         </div>
                     </div>
                     <div class="hero-visual">
@@ -43,11 +44,11 @@
                         <div class="card-stack">
                             <div class="card glass-card">
                                 <div class="card-icon">🎮</div>
-                                <h3>Play</h3>
+                                <h3>Jogar</h3>
                             </div>
                             <div class="card glass-card">
                                 <div class="card-icon">🏆</div>
-                                <h3>Earn</h3>
+                                <h3>Ganhar</h3>
                             </div>
                         </div>
                     </div>
@@ -55,51 +56,51 @@
 
                 <div id="dashboard" class="dashboard hidden">
                     <div class="section-header">
-                        <h2>Your Dashboard</h2>
+                        <h2>Seu Painel</h2>
                     </div>
                     <div class="stats-grid">
                         <div class="stat-card glass-card">
-                            <h3>Points</h3>
+                            <h3>Pontos</h3>
                             <p class="stat-value" id="userPoints">0</p>
                         </div>
                         <div class="stat-card glass-card">
-                            <h3>Role</h3>
+                            <h3>Cargo</h3>
                             <p class="stat-value" id="userRole">-</p>
                         </div>
                     </div>
 
                     <div class="actions-grid">
                         <div class="action-card glass-card">
-                            <h3>Redeem Code</h3>
+                            <h3>Resgatar Código</h3>
                             <div class="input-group">
-                                <input type="text" id="redeemCodeInput" placeholder="Enter code...">
-                                <button onclick="redeemCode()" class="btn-small">Redeem</button>
+                                <input type="text" id="redeemCodeInput" placeholder="Digite o código...">
+                                <button onclick="redeemCode()" class="btn-small">Resgatar</button>
                             </div>
                         </div>
 
                         <div id="adminPanel" class="action-card glass-card hidden">
-                            <h3>Admin Panel</h3>
+                            <h3>Painel Admin</h3>
                             <div class="input-group vertical">
-                                <input type="text" id="taskCode" placeholder="Task Code">
-                                <input type="number" id="taskPoints" placeholder="Points">
-                                <input type="number" id="taskTime" placeholder="Time (sec)">
-                                <button onclick="createTask()" class="btn-small">Create Task</button>
+                                <input type="text" id="taskCode" placeholder="Código da Tarefa">
+                                <input type="number" id="taskPoints" placeholder="Pontos">
+                                <input type="number" id="taskTime" placeholder="Tempo (seg)">
+                                <button onclick="createTask()" class="btn-small">Criar Tarefa</button>
                             </div>
                         </div>
 
                         <div id="roleManagement" class="action-card glass-card hidden">
-                            <h3>Role Management</h3>
+                            <h3>Gerenciar Cargos</h3>
                             <div class="input-group vertical">
-                                <input type="text" id="targetUserId" placeholder="User Discord ID">
+                                <input type="text" id="targetUserId" placeholder="ID do Usuário Discord">
                                 <select id="roleSelect" class="role-select">
-                                    <option value="">Select Role</option>
+                                    <option value="">Selecionar Cargo</option>
                                     <option value="Marechal">Marechal</option>
                                     <option value="General">General</option>
                                     <option value="Capitão">Capitão</option>
                                     <option value="Soldado">Soldado</option>
                                     <option value="Recruta">Recruta</option>
                                 </select>
-                                <button onclick="assignRole()" class="btn-small">Assign Role</button>
+                                <button onclick="assignRole()" class="btn-small">Atribuir Cargo</button>
                             </div>
                         </div>
                     </div>
@@ -109,33 +110,33 @@
             <!-- GAMES SECTION -->
             <section id="games" class="section">
                 <div class="section-header">
-                    <h2>Available Games</h2>
-                    <p>Explore our collection of games and challenges</p>
+                    <h2>Jogos Disponíveis</h2>
+                    <p>Explore nossa coleção de jogos e desafios</p>
                 </div>
                 <div class="games-grid">
                     <div class="game-card glass-card">
                         <div class="game-icon">🎯</div>
-                        <h3>Quick Tasks</h3>
-                        <p>Complete quick challenges and earn points instantly</p>
-                        <button class="btn-small" onclick="alert('Coming Soon!')">Play Now</button>
+                        <h3>Tarefas Rápidas</h3>
+                        <p>Complete desafios rápidos e ganhe pontos instantaneamente</p>
+                        <button class="btn-small" onclick="alert('Em Breve!')">Jogar Agora</button>
                     </div>
                     <div class="game-card glass-card">
                         <div class="game-icon">🏁</div>
-                        <h3>Speed Run</h3>
-                        <p>Race against time in our speed challenges</p>
-                        <button class="btn-small" onclick="alert('Coming Soon!')">Play Now</button>
+                        <h3>Corrida Rápida</h3>
+                        <p>Corra contra o tempo em nossos desafios de velocidade</p>
+                        <button class="btn-small" onclick="alert('Em Breve!')">Jogar Agora</button>
                     </div>
                     <div class="game-card glass-card">
                         <div class="game-icon">🎲</div>
-                        <h3>Daily Quests</h3>
-                        <p>New quests every day with special rewards</p>
-                        <button class="btn-small" onclick="alert('Coming Soon!')">Play Now</button>
+                        <h3>Missões Diárias</h3>
+                        <p>Novas missões todos os dias com recompensas especiais</p>
+                        <button class="btn-small" onclick="alert('Em Breve!')">Jogar Agora</button>
                     </div>
                     <div class="game-card glass-card">
                         <div class="game-icon">⚔️</div>
-                        <h3>Tournaments</h3>
-                        <p>Compete with others for the top spot</p>
-                        <button class="btn-small" onclick="alert('Coming Soon!')">Play Now</button>
+                        <h3>Torneios</h3>
+                        <p>Compete com outros pelo primeiro lugar</p>
+                        <button class="btn-small" onclick="alert('Em Breve!')">Jogar Agora</button>
                     </div>
                 </div>
             </section>
@@ -143,32 +144,32 @@
             <!-- COMMUNITY SECTION -->
             <section id="community" class="section">
                 <div class="section-header">
-                    <h2>Community</h2>
-                    <p>Connect with other players and join the conversation</p>
+                    <h2>Comunidade</h2>
+                    <p>Conecte-se com outros jogadores e participe da conversa</p>
                 </div>
                 <div class="community-grid">
                     <div class="community-card glass-card">
                         <div class="community-icon">💬</div>
-                        <h3>Discord Server</h3>
-                        <p>Join our Discord community with over 1,000+ active members</p>
-                        <a href="https://discord.gg/yourinvite" target="_blank" class="btn-small">Join Discord</a>
+                        <h3>Servidor Discord</h3>
+                        <p>Junte-se à nossa comunidade Discord com mais de 1.000+ membros ativos</p>
+                        <a href="https://discord.gg/yourinvite" target="_blank" class="btn-small">Entrar no Discord</a>
                     </div>
                     <div class="community-card glass-card">
                         <div class="community-icon">🏆</div>
-                        <h3>Leaderboard</h3>
-                        <p>Check out the top players and their achievements</p>
-                        <button class="btn-small" onclick="showLeaderboard()">View Rankings</button>
+                        <h3>Classificação</h3>
+                        <p>Confira os melhores jogadores e suas conquistas</p>
+                        <button class="btn-small" onclick="showLeaderboard()">Ver Rankings</button>
                     </div>
                     <div class="community-card glass-card">
                         <div class="community-icon">📢</div>
-                        <h3>Announcements</h3>
-                        <p>Stay updated with the latest news and events</p>
-                        <button class="btn-small" onclick="showAnnouncements()">Read More</button>
+                        <h3>Anúncios</h3>
+                        <p>Fique atualizado com as últimas notícias e eventos</p>
+                        <button class="btn-small" onclick="showAnnouncements()">Ler Mais</button>
                     </div>
                 </div>
 
                 <div id="leaderboardSection" class="leaderboard-section hidden">
-                    <h3>Top Players</h3>
+                    <h3>Melhores Jogadores</h3>
                     <div class="leaderboard-list" id="leaderboardList">
                         <!-- Populated by JS -->
                     </div>

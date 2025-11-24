@@ -73,12 +73,12 @@ async function loadUser() {
                     <span style="font-weight: 600;">${currentUser.username}</span>
                     <button onclick="logout()" class="btn-small" 
                             style="padding: 8px 16px; font-size: 0.9rem;">
-                        Logout
+                        Sair
                     </button>
                 </div>
             `;
 
-            heroLoginBtn.textContent = "Go to Dashboard";
+            heroLoginBtn.textContent = "Ir para o Painel";
             heroLoginBtn.href = "#home";
             heroLoginBtn.classList.add('nav-trigger');
             heroLoginBtn.setAttribute('data-section', 'home');
@@ -86,7 +86,7 @@ async function loadUser() {
             // Show Dashboard
             dashboard.classList.remove('hidden');
             userPoints.textContent = currentUser.points || 0;
-            userRole.textContent = currentUser.role || 'Member';
+            userRole.textContent = currentUser.role || 'Membro';
 
             // Show Admin Panel for high-rank users
             const adminRoles = ['Marechal', 'General'];
@@ -109,7 +109,7 @@ async function logout() {
         window.location.reload();
     } catch (err) {
         console.error('Logout failed', err);
-        alert('Logout failed. Please try again.');
+        alert('Falha ao sair. Tente novamente.');
     }
 }
 
@@ -119,7 +119,7 @@ async function redeemCode() {
     const code = codeInput.value.trim();
 
     if (!code) {
-        alert('Please enter a code');
+        alert('Por favor, digite um código');
         return;
     }
 
@@ -132,15 +132,15 @@ async function redeemCode() {
         const data = await res.json();
 
         if (res.ok) {
-            alert(`✅ Success! You earned ${data.newPoints || 'points'}!`);
+            alert(`✅ Sucesso! Você ganhou ${data.newPoints || 'pontos'}!`);
             codeInput.value = '';
             await loadUser(); // Refresh user data
         } else {
-            alert(`❌ ${data.error || 'Failed to redeem code'}`);
+            alert(`❌ ${data.error || 'Falha ao resgatar código'}`);
         }
     } catch (err) {
         console.error('Error redeeming code:', err);
-        alert('❌ Error redeeming code. Please try again.');
+        alert('❌ Erro ao resgatar código. Tente novamente.');
     }
 }
 
@@ -150,7 +150,7 @@ async function createTask() {
     const time = document.getElementById('taskTime').value;
 
     if (!code || !points || !time) {
-        alert('Please fill all fields');
+        alert('Por favor, preencha todos os campos');
         return;
     }
 
@@ -163,17 +163,17 @@ async function createTask() {
         const data = await res.json();
 
         if (res.ok) {
-            alert(`✅ Task created successfully!\nCode: ${code}\nPoints: ${points}\nExpires in: ${time}s`);
+            alert(`✅ Tarefa criada com sucesso!\nCódigo: ${code}\nPontos: ${points}\nExpira em: ${time}s`);
             // Clear inputs
             document.getElementById('taskCode').value = '';
             document.getElementById('taskPoints').value = '';
             document.getElementById('taskTime').value = '';
         } else {
-            alert(`❌ ${data.error || 'Failed to create task'}`);
+            alert(`❌ ${data.error || 'Falha ao criar tarefa'}`);
         }
     } catch (err) {
         console.error('Error creating task:', err);
-        alert('❌ Error creating task. Please try again.');
+        alert('❌ Erro ao criar tarefa. Tente novamente.');
     }
 }
 
@@ -183,7 +183,7 @@ async function assignRole() {
     const role = document.getElementById('roleSelect').value;
 
     if (!userId || !role) {
-        alert('Please fill all fields');
+        alert('Por favor, preencha todos os campos');
         return;
     }
 
@@ -196,15 +196,15 @@ async function assignRole() {
         const data = await res.json();
 
         if (res.ok) {
-            alert(`✅ Role "${role}" assigned to user ${userId}!`);
+            alert(`✅ Cargo "${role}" atribuído ao usuário ${userId}!`);
             document.getElementById('targetUserId').value = '';
             document.getElementById('roleSelect').value = '';
         } else {
-            alert(`❌ ${data.error || 'Failed to assign role'}`);
+            alert(`❌ ${data.error || 'Falha ao atribuir cargo'}`);
         }
     } catch (err) {
         console.error('Error assigning role:', err);
-        alert('❌ Error assigning role. Please try again.');
+        alert('❌ Erro ao atribuir cargo. Tente novamente.');
     }
 }
 
@@ -227,18 +227,18 @@ function showLeaderboard() {
                             <div class="leaderboard-rank">#${index + 1}</div>
                             <div class="leaderboard-user">
                                 <strong>${user.username}</strong>
-                                <div style="color: var(--text-muted); font-size: 0.9rem;">${user.role || 'Member'}</div>
+                                <div style="color: var(--text-muted); font-size: 0.9rem;">${user.role || 'Membro'}</div>
                             </div>
                             <div class="leaderboard-points">${user.points || 0} pts</div>
                         </div>
                     `).join('');
                 } else {
-                    leaderboardList.innerHTML = '<p style="text-align: center; color: var(--text-muted);">No players yet. Be the first!</p>';
+                    leaderboardList.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Nenhum jogador ainda. Seja o primeiro!</p>';
                 }
             })
             .catch(err => {
                 console.error('Error fetching leaderboard:', err);
-                leaderboardList.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Error loading leaderboard</p>';
+                leaderboardList.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Erro ao carregar classificação</p>';
             });
     } else {
         leaderboardSection.classList.add('hidden');
@@ -246,7 +246,7 @@ function showLeaderboard() {
 }
 
 function showAnnouncements() {
-    alert('📢 Announcements:\n\n• Welcome to NewGamE Hub!\n• Complete daily tasks to earn points\n• Join our Discord community\n• More features coming soon!');
+    alert('📢 Anúncios:\n\n• Bem-vindo ao NewGamE Hub!\n• Complete tarefas diárias para ganhar pontos\n• Junte-se à nossa comunidade Discord\n• Mais recursos em breve!');
 }
 
 // Expose functions to window for onclick events
